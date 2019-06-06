@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+    <script src="/resources/js/jquery/jquery.js"></script>
+    <script src="/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="/resources/js/mustache/mustache-min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+
+    <!-- CUSTOM -->
+    <link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+    <link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+    <script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+    <script src="maskMoney.js"></script>
+    <script src="custom.js"></script>
+</head>
+
+<body class="fluig-style-guide">
+
+    <form class="totvs-form grid vertical create-form-components ui-sortable t0"
+          name="createFormComponents" id="createFormComponents"
+          style="padding-left: 10px; padding-right: 10px;"> 
+
+
+          <h1 class="title-form-application">Solicitação de compra</h1>
+          <div class="paragraph-is-required system-message-information alert alert-info" role="alert" id="alert">
+              Todos os campos com * são de preenchimento obrigatório.
+          </div>
+
+
+          <div class="form-field" data-type="textbox" data-show-properties="" data-field-name="code" id="codeDiv">
+                <div class="form-input">
+                    <div class="form-group">
+                        <label>Código do pedido</label>
+                        <input type="text"
+                            class="form-control"
+                            name="code"     
+                            id="code"                       
+                            value=""
+                            placeholder=""
+                            data-size="small"
+                            style="width: 25%;"></div>
+                </div>
+            </div>
+
+        <section id="mainSection">
+           
+            <div class="form-field"
+                data-type="textbox"
+                data-show-properties=""
+                data-field-name="login"
+                style="position: relative; left: 0px; top: 0px;">
+
+                <div class="form-input">
+                    <div class="form-group"><label>usuario</label>
+                        <span class="required text-danger"><strong>*</strong></span>
+                        <input type="text"
+                            class="form-control"
+                            name="login"
+                            id="login"
+                            value=""
+                            placeholder="Usuário logado"
+                            data-size="small"
+                            style="width: 25%;"
+                            required="required"></div>
+                </div>
+            </div>
+            <div class="form-field" data-type="combo" data-show-properties="" data-field-name="category" style="width: 50%">
+                <div class="form-input">
+                    <div class="form-group"><label>Categoria</label><span class="required text-danger"><strong>*</strong></span>
+                        <select id="category" class="form-control" name="category" required="required">
+                            <option value="Limpeza">Limpeza</option>
+                            <option value="Escritório">Escritório</option>
+                            <option value="Alimentos">Alimentos</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-field" data-type="textarea" data-show-properties="" data-field-name="justify"
+                style="position: relative; left: 0px; top: 0px;">
+
+                <div class="form-input">
+                    <div class="form-group"><label>Justificativa</label>
+                        <textarea class="form-control"
+                                rows="3"
+                                name="justify"
+                                placeholder="Justifique seu pedido"
+                                data-size="medium"
+                                style="width: 50%;"></textarea>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="form-input" style="width: 50%" id = "providersDiv">
+                <div class="form-group">
+                    <label for="zoom">Fornecedor</label>
+                    <div class="input-group" style="width: 100%;">
+                        <input  class="form-control"
+                                type="zoom"
+                                id = "providers"
+                                name="providers"
+                                style="width: 100%"
+                                data-zoom="{
+                                'displayKey':'NOME',
+                                'datasetId':'fornecedores',
+                                'maximumSelectionLength':'1',
+                                'placeholder':'',
+                                'fields':[
+                                    {
+                                    'field':'CODIGO',
+                                    'label':'código'
+                                    },{
+                                    'field':'NOME',
+                                    'label':'Nome',
+                                    'standard':'true'
+                                    }
+                                ]
+                            }"
+                        />                       
+                        <input type="hidden" name="hidden_provider" id="hidden_provider">
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <div class="form-field" data-type="tabledetail" data-show-properties="" data-field-name="Produtos"
+             style="position: relative; left: 0px; top: 0px;">
+            <div class="form-input">
+                <div class="form-group"><label>Produtos</label>
+                    <table tablename="tableProducts" id="tableProducts" class="table" noaddbutton="true">
+                        <thead>
+                        <tr class="tableHeadRow">
+                            <th class="tableColumn">Código</th>
+                            <th class="tableColumn">Descrição</th>
+                            <th class="tableColumn">UM</th>
+                            <th class="tableColumn">Fabricante</th>
+                            <th class="tableColumn">Quantidade</th>
+                            <th class="tableColumn" id="productPriceColumn">Valor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="tableBodyRow">
+                            <td class="fs-v-align-middle">
+                                <div class="form-input"><input type="text" name="product_code" id="product_code" class="form-control"></div>
+                            </td>
+                            <td class="fs-v-align-middle">
+                                <div class="form-input"><input type="text" name="description" id="description" class="form-control"></div>
+                            </td>
+                            <td class="fs-v-align-middle">
+                                <div class="form-input"><input type="text" name="unitMeasurement" id="unitMeasurement" class="form-control"></div>
+                            </td>
+                            <td class="fs-v-align-middle">
+                                <div class="form-input"><input type="text" name="manufacturer" id="manufacturer" class="form-control"></div>
+                            </td>
+                            <td class="fs-v-align-middle">
+                                <div class="form-input"><input type="text" name="quantity" id="quantity" class="form-control"></div>
+                            </td>
+                            <td class="fs-v-align-middle" id="productPrice">
+                                <div class="form-input"><input type="text" name="price" id="price" class="form-control price" data-only-numbers="true"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table><button id="addProduct" type="button" class="btn btn-primary" onclick="wdkAddChild('tableProducts')">Novo Registro</button>
+                </div>
+            </div>
+        </div>
+
+        <section id="approveSection">
+            <div class="form-field" data-type="radio" data-show-properties="" data-field-name="approve" id="approval"
+                style="position: relative; left: 0px; top: 0px;">
+                <div class="form-input" id="approve">
+                    <div class="form-group"><label>Aprovar</label><span class="required text-danger"><strong>*</strong></span>
+                        <div class="radio-options">
+                            <div class="radio"><label>
+                                <input type="radio" name="approve" checked value="Sim" required="required">Sim</label></div>
+                            <div class="radio"><label>
+                                <input type="radio" name="approve" value="Não" required="required">Não</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</body>
+
+</html>
