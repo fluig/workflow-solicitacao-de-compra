@@ -5,16 +5,23 @@ $(function() {
 	
 	$(".price").maskMoney({prefix:'R$ ', allowNegative: false, thousands:'.', decimal:',', affixesStay: true});
 	
-	if (CURRENT_STATE == 1 || CURRENT_STATE == 0) {
-		solicitOrder();
-	} else if (CURRENT_STATE == 2) {
-		toQuote();
-	} else if (CURRENT_STATE == 3) {
-		approve();
-	} else if (CURRENT_STATE == 6) {
-		sendOrder();
-	} else if (CURRENT_STATE == 16) {
-		checkOrder();
+	switch(CURRENT_STATE) {
+	  case 0:
+	  case 1:
+		  solicitOrder();
+	    break;
+	  case 2:
+		  toBudget();
+	    break;
+	  case 3:
+		  approve();
+	    break;
+	  case 6:
+		  sendOrder();
+	    break;
+	  case 16:
+		  checkOrder();
+	    break;	  
 	}
 });
 
@@ -27,7 +34,7 @@ function solicitOrder() {
 	$("#codeDiv").hide();
 }
 
-function toQuote(){
+function toBudget(){
 	$("#mainSection").hide();
 	$("#code").prop('value', NUM_PROCES);
 	$("#codeDiv").prop('readonly', true)		

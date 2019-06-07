@@ -1,7 +1,6 @@
 function displayFields(form,customHTML){ 
 	
 	var CURRENT_STATE = getValue("WKNumState") ? getValue("WKNumState") : 0;	
-	
 	var CURRENT_USER  = getValue("WKUser");
 
 	customHTML.append('<script>' +
