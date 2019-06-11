@@ -17,6 +17,7 @@ node_modules/
 *.versionsBackup
 *.log
 *.dataservers
+*.servers
 
 
 
