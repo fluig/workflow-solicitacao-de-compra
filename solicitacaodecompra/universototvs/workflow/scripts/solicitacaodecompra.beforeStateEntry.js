@@ -1,9 +1,4 @@
 function beforeStateEntry(sequenceId){
-		
-	log.info("sequenceID" + sequenceId);	
-	log.info("WKNumProces" + getValue("WKNumProces"));
-	log.info("WKUser" + getValue("WKUser"));
-	
 	var parametros = new java.util.HashMap();				
 	
 	/*Esse valor poderia ser pego do fornecedor selecionado no formulário*/
@@ -25,5 +20,4 @@ function beforeStateEntry(sequenceId){
 				+ getValue("WKNumProces"));
 		notifier.notify(getValue("WKUser"), "cotacao_fornecedor", parametros, destinatarios, "text/html");
 	}	
-
 }

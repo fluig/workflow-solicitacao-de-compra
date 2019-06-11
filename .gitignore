@@ -1,9 +1,22 @@
 **/oauth
-**/.metadata/
-**/solicitacaodecompra/com.totvs.tds.ecm.dataservers
-**/solicitacaodecompra/br.com.totvs.tds.server.internal.ServerManagerImpl.servers
-**/solicitacaodecompra/universototvs/workflow/.resources
-**/solicitacaodecompra/universototvs/workflow/.resources/WCM.ws.cache
+desktop.ini
+.resources
+.resources/
+.metadata
+.classpath
+.settings/
+target/
+*.class
+*.iml
+.idea/
+bin/
+.metadata/
+bower_components/
+node_modules/
+.metadata
+*.versionsBackup
+*.log
+*.dataservers
 
 
 
