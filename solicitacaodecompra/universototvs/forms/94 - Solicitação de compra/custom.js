@@ -30,7 +30,7 @@ function solicitOrder() {
 	$("#productPrice").hide();
 	$("#approval").hide();
 	$("#approveSection").hide();	
-	$("#login").prop('readonly', true).prop('value', CURRENT_USER);
+	$("#login").prop('readonly', true).prop('value', CURRENT_USER );
 	$("#codeDiv").hide();
 }
 
